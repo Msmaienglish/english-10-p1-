@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ENGLISH 10 UNIT 1. FAMILY LIFE</title>
+<style>
+:root{
+ --blue:#1769e0;--blue2:#0d47a1;--orange:#ff8a34;--orange2:#ffb467;
+ --mint:#dff7ee;--green:#39a96b;--red:#e85b6b;--ink:#243244;--soft:#f7fbff;
+ --line:#dce9f7;--shadow:0 10px 28px rgba(25,74,125,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;color:var(--ink);font-family:"Segoe UI",Arial,sans-serif;
+ background:
+ radial-gradient(circle at 7% 7%,rgba(255,160,70,.15),transparent 20%),
+ radial-gradient(circle at 93% 13%,rgba(23,105,224,.12),transparent 22%),
+ #f9fcff;
+}
+.decor{position:fixed;z-index:-1;opacity:.18;font-size:44px;filter:saturate(.8)}
+.d1{left:2%;top:16%}.d2{right:3%;top:26%}.d3{left:4%;bottom:18%}.d4{right:3%;bottom:12%}
+.wrap{width:min(1080px,94vw);margin:auto;padding:22px 0 70px}
+.hero{
+ background:white;border:1px solid #dbeaf9;border-radius:22px;padding:18px 20px;
+ box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.hero:after{
+ content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-60px;top:-70px;
+ background:linear-gradient(135deg,rgba(255,138,52,.22),rgba(23,105,224,.13));
+}
+.kicker{font-weight:900;color:var(--orange);font-size:12px;letter-spacing:.16em}
+h1{font-size:clamp(23px,4vw,34px);margin:4px 0 2px;color:var(--blue2);text-align:center}
+.sub{font-size:14px;color:#60778e;text-align:center}
+.teacher{font-size:13px;margin-top:7px;color:#49657d;text-align:center}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
+.btn{
+ border:1px solid #cfe0f2;background:white;color:#234b74;border-radius:11px;padding:9px 12px;
+ cursor:pointer;font-weight:700;transition:.18s;
+}
+.btn:hover{transform:translateY(-1px);border-color:var(--blue);box-shadow:0 4px 14px rgba(23,105,224,.12)}
+.btn.primary{background:linear-gradient(135deg,var(--blue),#3887ef);color:#fff;border:0}
+.btn.orange{background:linear-gradient(135deg,var(--orange),#ffa65f);color:#fff;border:0}
+.btn.danger{color:#b83848;border-color:#f1c5cb}
+.student{
+ display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0;
+}
+.field{background:white;border:1px solid var(--line);border-radius:13px;padding:10px}
+.field label{display:block;font-size:12px;color:#6b8195;margin-bottom:5px}
+.field input{width:100%;border:0;outline:0;font:inherit;color:var(--ink)}
+.stats{
+ position:sticky;top:7px;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
+ border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow);padding:10px;margin:12px 0 18px;
+}
+.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.stat{background:#f7fbff;border:1px solid #e2edf8;border-radius:10px;padding:7px;text-align:center;font-size:11px;color:#71869a}
+.stat b{display:block;color:var(--blue);font-size:15px;margin-top:2px}
+.progress{height:7px;background:#eaf1f8;border-radius:999px;overflow:hidden;margin-top:8px}
+.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--orange),var(--blue));transition:.3s}
+.section{
+ margin:24px 0 10px;padding:12px 14px;border-radius:14px;background:linear-gradient(90deg,#eef6ff,#fff8f1);
+ border-left:4px solid var(--orange);
+}
+.section h2{margin:0;color:var(--blue2);font-size:19px}
+.section p{margin:3px 0 0;color:#60778e;font-style:italic;font-family:Georgia,serif}
+.list{display:grid;gap:12px}
+.card{
+ background:white;border:1px solid var(--line);border-radius:17px;padding:16px;box-shadow:0 5px 18px rgba(26,76,125,.07);
+}
+.card.correct-card{border-color:#8bd1aa}
+.card.wrong-card{border-color:#efa4ae}
+.qhead{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px}
+.qnum{background:#eaf3ff;color:var(--blue);font-weight:900;padding:6px 9px;border-radius:9px;font-size:13px}
+.qstatus{font-size:12px;color:#8b9cac}
+.qtext{font-family:Georgia,"Times New Roman",serif;font-size:19px;line-height:1.48;color:#202a34}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.option{
+ width:100%;text-align:left;border:1px solid #dbe8f4;background:#fbfdff;border-radius:11px;
+ padding:11px 12px;cursor:pointer;color:#2c3c4e;min-height:48px;
+ font-size:19px;line-height:1.45;font-family:Georgia,"Times New Roman",serif;
+}
+.option:hover{border-color:#9dc1eb;background:#f5faff}
+.option.correct{background:#e5f7eb;border-color:#77c695;color:#17643a}
+.option.wrong{background:#fdebee;border-color:#e89aa5;color:#a33243}
+.option:disabled{cursor:default}
+.feedback,.explain{display:none;margin-top:10px;padding:11px 12px;border-radius:11px;line-height:1.52}
+.feedback.show,.explain.show{display:block}
+.feedback.ok{background:#eaf8ef;border:1px solid #a8dcbc;color:#20653d}
+.feedback.bad{background:#fff0f2;border:1px solid #efb5bd;color:#9d3644}
+.explain{background:#fffaf3;border:1px solid #f3ddc3;color:#37495a}
+.explain h4{margin:0 0 7px;color:#cc681e}
+.option-analysis{margin-top:8px;display:grid;gap:5px}
+.option-analysis div{padding:7px 8px;border-radius:8px;background:white;border:1px solid #eee}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.shake{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-5px)}50%{transform:translateX(5px)}75%{transform:translateX(-3px)}}
+.confetti{position:fixed;top:-15px;width:8px;height:13px;z-index:999;pointer-events:none;animation:fall 1.05s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.3}}
+.footer-actions{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0}
+.note{
+ margin-top:15px;background:#fff6df;border:1px solid #f0d596;border-radius:13px;padding:12px;color:#785c1d
+}
+.modal{position:fixed;inset:0;background:rgba(25,37,50,.55);display:none;place-items:center;z-index:1000;padding:18px}
+.modal.show{display:grid}
+.modalbox{width:min(650px,96vw);max-height:86vh;overflow:auto;background:white;border-radius:18px;padding:20px;box-shadow:0 18px 45px rgba(0,0,0,.18)}
+.modalbox h3{color:var(--blue);margin-top:0}
+.review{border:1px solid #e0eaf4;border-radius:10px;padding:10px;margin:7px 0}
+@media(max-width:760px){
+ .student{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(2,1fr)}
+ .options{grid-template-columns:1fr}.qtext{font-size:17px}.option{font-size:17px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{
+ body{background:white}.decor,.stats,.controls,.actions,.footer-actions{display:none!important}
+ .wrap{width:100%;padding:0}.hero,.card{box-shadow:none;break-inside:avoid}
+ .feedback,.explain{display:block!important}
+}
+</style>
+</head>
+<body>
+<div class="decor d1">🍎</div><div class="decor d2">🥑</div><div class="decor d3">🥕</div><div class="decor d4">🍊</div>
+<div class="wrap">
+<header class="hero">
+ <h1>ENGLISH 10 UNIT 1. FAMILY LIFE</h1>
+ <div class="sub">Interactive practice • Vocabulary & Grammar</div>
+ <div class="teacher">Created by: <b>Ms Tuyet Mai FTU</b> • Contact: <b>0365 423 820</b></div>
+ <div class="controls">
+  <button class="btn" id="soundBtn">🔊 Âm thanh</button>
+  <button class="btn" id="printBtn">🖨 In bài</button>
+  <button class="btn danger" id="resetBtn">↻ Làm lại toàn bộ</button>
+ </div>
+</header>
+
+<div class="student">
+ <div class="field"><label for="name">Họ và tên học sinh</label><input id="name" placeholder="Nhập họ và tên"></div>
+ <div class="field"><label for="className">Lớp</label><input id="className" placeholder="Ví dụ: 10A1"></div>
+</div>
+
+<div class="stats">
+ <div class="stats-grid">
+  <div class="stat">Tổng số câu<b>50</b></div>
+  <div class="stat">Đã làm<b id="done">0</b></div>
+  <div class="stat">Chưa làm<b id="left">50</b></div>
+  <div class="stat">Đúng lần đầu<b id="right">0</b></div>
+  <div class="stat">Tỉ lệ đúng<b id="acc">0%</b></div>
+ </div>
+ <div class="progress"><div id="bar"></div></div>
+</div>
+
+<section>
+ <div class="section"><h2>E3: Vocabulary</h2><p>Mark the letter A, B, C or D to indicate the correct answer to each of the following questions.</p></div>
+ <div class="list" id="e3"></div>
+</section>
+<section>
+ <div class="section"><h2>E4: Grammar</h2><p>Mark the letter A, B, C or D to indicate the correct answer to each of the following questions.</p></div>
+ <div class="list" id="e4"></div>
+</section>
+
+<div class="footer-actions">
+ <button class="btn" id="unanswered">↪ Câu chưa làm đầu tiên</button>
+ <button class="btn" id="mistakes">⚠ Xem câu sai</button>
+ <button class="btn orange" id="submit">NỘP BÀI & XEM KẾT QUẢ</button>
+</div>
+
+<div class="note"><b>Nội dung cần người dùng kiểm tra lại:</b> Trong dữ liệu nguồn, phần E3 chuyển từ Question 33 sang Question 35; không có Question 34. File giữ nguyên số thứ tự theo nguồn.</div>
+</div>
+
+<div class="modal" id="modal"><div class="modalbox"><button class="btn" id="close" style="float:right">✕</button><div id="modalContent"></div></div></div>
+
+<script>
+const questions=[{"id": 1, "section": "E3", "qno": 1, "text": "Family __________ are important because they teach children what is right or wrong in life.", "options": ["bonds", "values", "holidays", "connections"], "correct": 1, "explanation": "Cụm <b>family values</b> chỉ những giá trị, nguyên tắc và niềm tin mà gia đình truyền cho các thành viên. Vế sau “teach children what is right or wrong” nói trực tiếp đến các giá trị đúng – sai.", "translation": "Các giá trị gia đình rất quan trọng vì chúng dạy trẻ điều gì là đúng hay sai trong cuộc sống.", "clue": "Dấu hiệu: <i>what is right or wrong in life</i> → các chuẩn mực/giá trị.", "remember": "family values = các giá trị gia đình", "option_notes": {"A": "family bonds = mối gắn kết gia đình, không phải các chuẩn mực đúng – sai.", "B": "values = các giá trị, phù hợp nhất với ý dạy trẻ điều đúng – sai.", "C": "holidays = kỳ nghỉ/ngày lễ, không phù hợp nghĩa.", "D": "connections = các mối liên hệ/kết nối, không diễn tả nguyên tắc sống."}}, {"id": 2, "section": "E3", "qno": 2, "text": "____ the rubbish in the early morning is a part of my daily routine.", "options": ["Putting out", "Coming out", "Pulling out", "Bringing out"], "correct": 0, "explanation": "<b>put out the rubbish</b> là cụm động từ dùng với nghĩa mang/đem rác ra ngoài để thu gom.", "translation": "Đem rác ra ngoài vào sáng sớm là một phần trong thói quen hằng ngày của tôi.", "clue": "Collocation: put out the rubbish.", "remember": "put out the rubbish = đem rác ra ngoài", "option_notes": {"A": "put out = đem/đặt ra ngoài; đúng trong cụm put out the rubbish.", "B": "come out = đi/được đưa ra, chủ ngữ thường tự di chuyển; không dùng với rubbish theo cấu trúc này.", "C": "pull out = kéo/rút ra.", "D": "bring out = mang ra/cho ra mắt; không phải collocation tự nhiên ở đây."}}, {"id": 3, "section": "E3", "qno": 3, "text": "__________ is a person who works at home and takes care of the house and family.", "options": ["Breadwinner", "Homemaker", "Servant", "Houseman"], "correct": 1, "explanation": "<b>homemaker</b> là người chăm lo nhà cửa và gia đình, thường làm các công việc nội trợ tại nhà.", "translation": "Người nội trợ là người làm việc ở nhà và chăm sóc nhà cửa, gia đình.", "clue": "Định nghĩa ngay trong câu: works at home + takes care of the house and family.", "remember": "homemaker = người nội trợ", "option_notes": {"A": "breadwinner = người kiếm thu nhập chính cho gia đình.", "B": "homemaker = người nội trợ; đúng với định nghĩa.", "C": "servant = người hầu/người giúp việc.", "D": "houseman không phải từ phù hợp với nghĩa “người nội trợ” trong ngữ cảnh này."}}, {"id": 4, "section": "E3", "qno": 4, "text": "My mother ________ the responsibility for running the household.", "options": ["holds", "takes", "runs", "bears"], "correct": 1, "explanation": "Cụm chuẩn là <b>take responsibility for + N/V-ing</b> = chịu/nhận trách nhiệm về việc gì.", "translation": "Mẹ tôi chịu trách nhiệm điều hành công việc gia đình.", "clue": "Collocation: take responsibility for.", "remember": "take responsibility for = chịu trách nhiệm về", "option_notes": {"A": "hold responsibility có thể gặp trong một số ngữ cảnh nhưng không tự nhiên bằng take responsibility trong mẫu này.", "B": "takes responsibility for = cụm chuẩn, phù hợp nhất.", "C": "run the responsibility là sai kết hợp từ.", "D": "bear responsibility có thể đúng trong văn phong trang trọng, nhưng đề kiểm tra collocation thông dụng take responsibility."}}, {"id": 5, "section": "E3", "qno": 5, "text": "Doing chores as a family will help strengthen __________.", "options": ["family bonds", "generation gap", "family trees", "family values"], "correct": 0, "explanation": "<b>strengthen family bonds</b> = củng cố mối gắn kết gia đình. Cùng nhau làm việc nhà tạo cơ hội hợp tác và gần gũi hơn.", "translation": "Cùng nhau làm việc nhà sẽ giúp củng cố tình cảm/gắn kết gia đình.", "clue": "Động từ strengthen thường đi với bonds/relationships.", "remember": "strengthen family bonds = thắt chặt gắn kết gia đình", "option_notes": {"A": "family bonds = mối gắn kết gia đình; đúng.", "B": "generation gap = khoảng cách thế hệ; thường nói reduce/bridge the generation gap, không phải strengthen.", "C": "family trees = cây gia phả.", "D": "family values = các giá trị gia đình; có thể uphold/share values, nhưng không phải ý trực tiếp ở đây."}}, {"id": 6, "section": "E3", "qno": 6, "text": "Linh can’t go out with us to see a movie now because she’s ____ dinner.", "options": ["preparing", "making", "arranging", "keeping"], "correct": 0, "explanation": "<b>prepare dinner</b> = chuẩn bị bữa tối. Đây là collocation tự nhiên và sát nghĩa nhất.", "translation": "Linh không thể đi xem phim cùng chúng tôi bây giờ vì cô ấy đang chuẩn bị bữa tối.", "clue": "prepare + meal/dinner.", "remember": "prepare dinner = chuẩn bị bữa tối", "option_notes": {"A": "preparing dinner = chuẩn bị bữa tối; đúng.", "B": "making dinner cũng có thể dùng trong giao tiếp, nhưng đề hướng đến collocation prepare dinner.", "C": "arrange dinner = sắp xếp/tổ chức bữa tối, khác nghĩa.", "D": "keep dinner không phù hợp."}}, {"id": 7, "section": "E3", "qno": 7, "text": "He's a man of strong __________. He always fights for what is right and you can rely on him.", "options": ["health", "character", "hands", "influence"], "correct": 1, "explanation": "<b>a man of strong character</b> là người có bản lĩnh, phẩm chất vững vàng. Vế sau mô tả sự chính trực và đáng tin cậy.", "translation": "Anh ấy là người có phẩm chất/bản lĩnh mạnh mẽ. Anh ấy luôn đấu tranh cho điều đúng và bạn có thể tin cậy anh ấy.", "clue": "fight for what is right + rely on him → phẩm chất đạo đức/bản lĩnh.", "remember": "strong character = bản lĩnh/phẩm chất mạnh mẽ", "option_notes": {"A": "strong health không diễn tả phẩm chất đạo đức.", "B": "strong character = có bản lĩnh, phẩm chất vững vàng; đúng.", "C": "strong hands = đôi tay khỏe.", "D": "strong influence = ảnh hưởng mạnh; không khớp vế sau."}}, {"id": 8, "section": "E3", "qno": 8, "text": "When his wife gave birth to a baby boy, Mr. Nam became the sole ______.", "options": ["housemaid", "housekeeper", "father", "breadwinner"], "correct": 3, "explanation": "<b>sole breadwinner</b> = người duy nhất kiếm thu nhập chính cho gia đình.", "translation": "Khi vợ sinh con trai, ông Nam trở thành người duy nhất kiếm tiền nuôi gia đình.", "clue": "sole + breadwinner là collocation rất thường gặp.", "remember": "sole breadwinner = người duy nhất kiếm sống cho gia đình", "option_notes": {"A": "housemaid = người giúp việc nữ.", "B": "housekeeper = người quản lý/chăm sóc nhà cửa.", "C": "sole father không diễn tả vai trò tài chính.", "D": "breadwinner = người kiếm thu nhập chính; sole breadwinner là cụm chuẩn."}}, {"id": 9, "section": "E3", "qno": 9, "text": "Doing housework brings great ________ to children as it helps them develop necessary life skills.", "options": ["benefits", "hard work", "results", "practices"], "correct": 0, "explanation": "<b>bring benefits to somebody</b> = mang lại lợi ích cho ai. Vế sau giải thích lợi ích là phát triển kỹ năng sống.", "translation": "Làm việc nhà mang lại nhiều lợi ích cho trẻ vì giúp các em phát triển những kỹ năng sống cần thiết.", "clue": "Collocation: bring benefits to.", "remember": "bring benefits to = mang lại lợi ích cho", "option_notes": {"A": "benefits = lợi ích; đúng với cấu trúc bring benefits to.", "B": "hard work = công việc/sự làm việc chăm chỉ; không hợp sau bring great ... to children.", "C": "results = kết quả; thường bring results, nhưng ý câu nhấn mạnh lợi ích.", "D": "practices = các hoạt động/thực hành, không hợp."}}, {"id": 10, "section": "E3", "qno": 10, "text": "She does two jobs at the same time as she is the main__________ of the family.", "options": ["breadwinner", "homemaker", "housewife", "bread maker"], "correct": 0, "explanation": "<b>main breadwinner</b> = người kiếm thu nhập chính trong gia đình.", "translation": "Cô ấy làm hai công việc cùng lúc vì cô ấy là người kiếm thu nhập chính của gia đình.", "clue": "main + breadwinner.", "remember": "breadwinner = người trụ cột về thu nhập", "option_notes": {"A": "breadwinner = người kiếm thu nhập chính; đúng.", "B": "homemaker = người nội trợ.", "C": "housewife = bà nội trợ.", "D": "bread maker = người làm bánh mì/người làm ra bánh, không mang nghĩa trụ cột tài chính."}}, {"id": 11, "section": "E3", "qno": 11, "text": "Kindness and responsibility are two __________ that many parents want to teach to their children.", "options": ["family values", "customs", "cultures", "ideas"], "correct": 0, "explanation": "Kindness và responsibility là những <b>family values</b> – giá trị mà cha mẹ muốn truyền dạy cho con.", "translation": "Lòng tốt và tinh thần trách nhiệm là hai giá trị gia đình mà nhiều cha mẹ muốn dạy con.", "clue": "teach values to children.", "remember": "family values = giá trị gia đình", "option_notes": {"A": "family values phù hợp trực tiếp với kindness và responsibility.", "B": "customs = phong tục.", "C": "cultures = các nền văn hóa.", "D": "ideas = ý tưởng, quá chung."}}, {"id": 12, "section": "E3", "qno": 12, "text": "Sarah is a(n) __________girl. She never cheats in exams.", "options": ["generous", "sociable", "frank", "honest"], "correct": 3, "explanation": "<b>honest</b> = trung thực. “She never cheats in exams” là bằng chứng trực tiếp cho tính trung thực.", "translation": "Sarah là một cô gái trung thực. Cô ấy không bao giờ gian lận trong kỳ thi.", "clue": "never cheats → honest.", "remember": "honest = trung thực", "option_notes": {"A": "generous = hào phóng.", "B": "sociable = hòa đồng.", "C": "frank = thẳng thắn.", "D": "honest = trung thực; phù hợp nhất."}}, {"id": 13, "section": "E3", "qno": 13, "text": "Instead of giving me answers to questions, my parents always ____________me to think for myself.", "options": ["support", "encourage", "respect", "strengthen"], "correct": 1, "explanation": "<b>encourage somebody to do something</b> = khuyến khích ai làm gì.", "translation": "Thay vì cho tôi đáp án, bố mẹ luôn khuyến khích tôi tự suy nghĩ.", "clue": "Cấu trúc: encourage + O + to V.", "remember": "encourage sb to V = khuyến khích ai làm gì", "option_notes": {"A": "support sb có thể là ủng hộ ai, nhưng không đi trực tiếp với mẫu sb to V theo cách này.", "B": "encourage me to think = khuyến khích tôi suy nghĩ; đúng cấu trúc.", "C": "respect me to think là sai cấu trúc.", "D": "strengthen me to think là sai nghĩa/cấu trúc."}}, {"id": 14, "section": "E3", "qno": 14, "text": "Ms. Mai asked me how she could ____ household chores equally in her family.", "options": ["make", "divide", "give", "contribute"], "correct": 1, "explanation": "<b>divide household chores</b> = phân chia việc nhà. “equally” củng cố nghĩa chia đều.", "translation": "Cô Mai hỏi tôi làm thế nào cô ấy có thể phân chia việc nhà một cách công bằng trong gia đình.", "clue": "equally → divide.", "remember": "divide household chores = phân chia việc nhà", "option_notes": {"A": "make chores không tự nhiên.", "B": "divide chores = phân chia việc nhà; đúng.", "C": "give chores có thể giao việc, nhưng không phù hợp với equally trong cấu trúc này.", "D": "contribute chores sai cấu trúc."}}, {"id": 15, "section": "E3", "qno": 15, "text": "She's such a good wife. She's _________her husband through difficult times.", "options": ["taught", "left", "supported", "provided"], "correct": 2, "explanation": "<b>support somebody through difficult times</b> = hỗ trợ/ở bên ai vượt qua giai đoạn khó khăn.", "translation": "Cô ấy là một người vợ tốt. Cô ấy đã ở bên và hỗ trợ chồng vượt qua những thời điểm khó khăn.", "clue": "through difficult times → support.", "remember": "support sb through difficult times", "option_notes": {"A": "taught = đã dạy.", "B": "left = đã rời bỏ.", "C": "supported = đã hỗ trợ; đúng nghĩa.", "D": "provided thường cần cấu trúc provide sb with sth / provide sth for sb."}}, {"id": 16, "section": "E3", "qno": 16, "text": "Jim's main__________ in his home is to keep the house clean.", "options": ["right", "honour", "part", "responsibility"], "correct": 3, "explanation": "<b>responsibility</b> = trách nhiệm. Cụm “is to keep the house clean” nêu nhiệm vụ mà Jim phải đảm nhận.", "translation": "Trách nhiệm chính của Jim ở nhà là giữ cho ngôi nhà sạch sẽ.", "clue": "main responsibility = trách nhiệm chính.", "remember": "responsibility = trách nhiệm", "option_notes": {"A": "right = quyền.", "B": "honour = danh dự.", "C": "part = phần/vai trò, nhưng không tự nhiên bằng responsibility.", "D": "responsibility = trách nhiệm; đúng."}}, {"id": 17, "section": "E3", "qno": 17, "text": "When all members of the family share housework, the family ____________ will become stronger.", "options": ["joys", "happiness", "life", "bonds"], "correct": 3, "explanation": "<b>family bonds</b> = mối gắn kết gia đình; có thể “become stronger”.", "translation": "Khi mọi thành viên cùng chia sẻ việc nhà, mối gắn kết gia đình sẽ trở nên bền chặt hơn.", "clue": "become stronger → bonds.", "remember": "family bonds = mối gắn kết gia đình", "option_notes": {"A": "joys = những niềm vui.", "B": "happiness = hạnh phúc, không dùng tự nhiên với become stronger.", "C": "family life = đời sống gia đình, không phù hợp cấu trúc.", "D": "bonds = mối gắn kết; đúng."}}, {"id": 18, "section": "E3", "qno": 18, "text": "Preparing and cooking meals are some of the essential __________for teens.", "options": ["soft skills", "life skills", "table manners", "netiquette"], "correct": 1, "explanation": "Chuẩn bị và nấu ăn là các <b>life skills</b> – kỹ năng sống thiết yếu.", "translation": "Chuẩn bị và nấu các bữa ăn là một số kỹ năng sống thiết yếu đối với thanh thiếu niên.", "clue": "preparing and cooking meals → practical life skills.", "remember": "life skills = kỹ năng sống", "option_notes": {"A": "soft skills = kỹ năng mềm như giao tiếp, hợp tác.", "B": "life skills = kỹ năng sống; đúng.", "C": "table manners = phép lịch sự trên bàn ăn.", "D": "netiquette = phép lịch sự trên mạng."}}, {"id": 19, "section": "E3", "qno": 19, "text": "When I lived in this city, I used to shop for __________at this supermarket.", "options": ["heavy lifting", "groceries", "housework", "laundry"], "correct": 1, "explanation": "<b>shop for groceries</b> = đi mua thực phẩm và đồ dùng thiết yếu.", "translation": "Khi sống ở thành phố này, tôi thường mua thực phẩm/đồ tạp hóa tại siêu thị này.", "clue": "shop for + groceries.", "remember": "groceries = thực phẩm/đồ tạp hóa", "option_notes": {"A": "heavy lifting = việc bê vác nặng.", "B": "groceries = hàng tạp hóa/thực phẩm; đúng.", "C": "housework = việc nhà.", "D": "laundry = đồ giặt/việc giặt."}}, {"id": 20, "section": "E3", "qno": 20, "text": "The kids deeply__________ their grandfather for his great knowledge about the world.", "options": ["create", "develop", "respect", "discuss"], "correct": 2, "explanation": "<b>respect somebody for something</b> = kính trọng ai vì điều gì.", "translation": "Bọn trẻ rất kính trọng ông vì kiến thức sâu rộng của ông về thế giới.", "clue": "respect sb for sth.", "remember": "respect sb for sth = kính trọng ai vì điều gì", "option_notes": {"A": "create = tạo ra.", "B": "develop = phát triển.", "C": "respect = kính trọng; đúng.", "D": "discuss = thảo luận; cần tân ngữ là vấn đề, không phải người theo nghĩa này."}}, {"id": 21, "section": "E3", "qno": 21, "text": "She decided to find a job to __________ money instead of just living at home and being a housekeeper.", "options": ["lend", "earn", "borrow", "raise"], "correct": 1, "explanation": "<b>earn money</b> = kiếm tiền thông qua làm việc.", "translation": "Cô ấy quyết định tìm việc để kiếm tiền thay vì chỉ ở nhà và làm nội trợ.", "clue": "find a job → earn money.", "remember": "earn money = kiếm tiền", "option_notes": {"A": "lend = cho vay.", "B": "earn = kiếm; đúng.", "C": "borrow = vay.", "D": "raise money = gây quỹ/quyên góp tiền, khác nghĩa."}}, {"id": 22, "section": "E3", "qno": 22, "text": "I'm lucky to have such a(n)__________ brother who always gives me help when I need it.", "options": ["support", "supporting", "supported", "supportive"], "correct": 3, "explanation": "<b>supportive</b> là tính từ nghĩa là hay giúp đỡ, ủng hộ. Sau “such a(n)” và trước danh từ “brother” cần tính từ.", "translation": "Tôi may mắn có một người anh/em trai rất biết hỗ trợ, luôn giúp tôi khi tôi cần.", "clue": "such a(n) + adjective + noun.", "remember": "supportive (adj) = hay giúp đỡ, ủng hộ", "option_notes": {"A": "support là danh từ/động từ, không phù hợp vị trí tính từ trước brother.", "B": "supporting thường là V-ing hoặc tính từ mang nghĩa phụ trợ, không tự nhiên ở đây.", "C": "supported = được hỗ trợ, sai nghĩa.", "D": "supportive = biết hỗ trợ; đúng từ loại và nghĩa."}}, {"id": 23, "section": "E3", "qno": 23, "text": "In my family, my father always takes charge of doing the ____ lifting.", "options": ["strong", "hard", "heavy", "huge"], "correct": 2, "explanation": "<b>heavy lifting</b> là cụm cố định chỉ công việc bê/vác vật nặng.", "translation": "Trong gia đình tôi, bố luôn đảm nhiệm việc bê vác nặng.", "clue": "Collocation: heavy lifting.", "remember": "heavy lifting = việc bê vác nặng", "option_notes": {"A": "strong lifting không phải collocation.", "B": "hard lifting không tự nhiên.", "C": "heavy lifting = cụm đúng.", "D": "huge lifting không dùng."}}, {"id": 24, "section": "E3", "qno": 24, "text": "Do you have to ____ the rubbish out?.", "options": ["put", "make", "empty", "do"], "correct": 0, "explanation": "<b>put the rubbish out</b> = đem rác ra ngoài. Đây là phrasal verb <i>put out</i> với tân ngữ chen giữa.", "translation": "Bạn có phải đem rác ra ngoài không?", "clue": "put + the rubbish + out.", "remember": "put the rubbish out = đem rác ra ngoài", "option_notes": {"A": "put ... out = đem ra ngoài; đúng.", "B": "make ... out không mang nghĩa đổ rác.", "C": "empty the rubbish out không phải cách nói mục tiêu của đề.", "D": "do the rubbish out sai collocation."}}, {"id": 25, "section": "E3", "qno": 25, "text": "My mother told me to do the ____ yesterday but I forgot about it since I had much homework to finish.", "options": ["wash-up", "laundry", "childcare", "exercises"], "correct": 1, "explanation": "<b>do the laundry</b> = giặt quần áo. Đây là collocation chuẩn với <i>do</i>.", "translation": "Mẹ bảo tôi giặt quần áo hôm qua nhưng tôi quên vì có nhiều bài tập về nhà.", "clue": "do + the laundry.", "remember": "do the laundry = giặt quần áo", "option_notes": {"A": "wash-up thường dùng trong cụm do the washing-up, không phải do the wash-up trong dạng này.", "B": "laundry = việc giặt/đồ giặt; do the laundry là đúng.", "C": "childcare = việc chăm trẻ, không phù hợp.", "D": "do exercises có thể đúng nhưng câu đã có “the” và ngữ cảnh việc nhà."}}, {"id": 26, "section": "E3", "qno": 26, "text": "His parents give him full__________ for his choice of school.", "options": ["support", "change", "value", "bond"], "correct": 0, "explanation": "<b>give somebody full support</b> = hoàn toàn ủng hộ ai.", "translation": "Bố mẹ hoàn toàn ủng hộ lựa chọn trường học của cậu ấy.", "clue": "full support = sự ủng hộ hoàn toàn.", "remember": "give sb full support", "option_notes": {"A": "support = sự ủng hộ; đúng.", "B": "change = sự thay đổi.", "C": "value = giá trị.", "D": "bond = mối gắn kết."}}, {"id": 27, "section": "E3", "qno": 27, "text": "My mother and I often go to the supermarket to shop for ____ at weekends.", "options": ["cook", "groceries", "heavy lifting", "the chores"], "correct": 1, "explanation": "<b>shop for groceries</b> là cụm chuẩn.", "translation": "Mẹ và tôi thường đi siêu thị mua thực phẩm vào cuối tuần.", "clue": "supermarket + shop for → groceries.", "remember": "shop for groceries", "option_notes": {"A": "cook là động từ/người nấu, không phù hợp sau shop for.", "B": "groceries = hàng tạp hóa/thực phẩm; đúng.", "C": "heavy lifting không phải thứ đi mua.", "D": "the chores = việc nhà, không phải hàng hóa."}}, {"id": 28, "section": "E3", "qno": 28, "text": "It's not easy for some tenth-graders to get into high school ____________.", "options": ["works", "routines", "times", "responsibilities"], "correct": 1, "explanation": "<b>get into a routine</b> = làm quen/đi vào nề nếp. “high school routines” nói đến nếp sinh hoạt và học tập ở THPT.", "translation": "Không dễ để một số học sinh lớp 10 làm quen với nề nếp ở trường THPT.", "clue": "Cụm: get into a routine.", "remember": "get into a routine = đi vào nề nếp/làm quen lịch sinh hoạt", "option_notes": {"A": "works không phù hợp.", "B": "routines = nề nếp/thói quen; phù hợp nhất.", "C": "times không tạo thành collocation.", "D": "responsibilities = trách nhiệm; không dùng với get into theo nghĩa này."}}, {"id": 29, "section": "E3", "qno": 29, "text": "After eating dinner, I have to do the ____ and then do my homework every day.", "options": ["washing-up", "wash-up", "washing-ups", "washings-up"], "correct": 0, "explanation": "<b>do the washing-up</b> = rửa bát đĩa sau bữa ăn. Đây là danh từ không đếm được trong cụm cố định.", "translation": "Sau bữa tối, tôi phải rửa bát rồi mới làm bài tập về nhà mỗi ngày.", "clue": "do the washing-up.", "remember": "the washing-up = việc rửa bát", "option_notes": {"A": "washing-up là dạng đúng trong cụm do the washing-up.", "B": "wash-up không phải dạng danh từ chuẩn ở đây.", "C": "washing-ups sai vì washing-up không dùng số nhiều trong cụm này.", "D": "washings-up sai hình thái."}}, {"id": 30, "section": "E3", "qno": 30, "text": "My mother is a __________. She doesn't go to work, but stays at home to look after the family.", "options": ["breadwinner", "homemaker", "housemaid", "solider"], "correct": 1, "explanation": "<b>homemaker</b> là người ở nhà chăm sóc nhà cửa và gia đình.", "translation": "Mẹ tôi là người nội trợ. Mẹ không đi làm mà ở nhà chăm sóc gia đình.", "clue": "stays at home to look after the family → homemaker.", "remember": "homemaker = người nội trợ", "option_notes": {"A": "breadwinner = người kiếm thu nhập chính.", "B": "homemaker = người nội trợ; đúng.", "C": "housemaid = người giúp việc.", "D": "solider (theo nguồn) không phù hợp nghĩa."}}, {"id": 31, "section": "E3", "qno": 31, "text": "My eldest son is strong enough to do the__________ for the family.", "options": ["heavy lifting", "household chores", "cooking", "laundry"], "correct": 0, "explanation": "<b>strong enough</b> gợi đến công việc cần sức lực; <b>heavy lifting</b> là cụm phù hợp nhất.", "translation": "Con trai lớn của tôi đủ khỏe để làm việc bê vác nặng cho gia đình.", "clue": "strong enough → heavy lifting.", "remember": "do the heavy lifting = đảm nhận việc nặng", "option_notes": {"A": "heavy lifting = công việc bê/vác nặng; đúng.", "B": "household chores = việc nhà nói chung, không nhất thiết cần khỏe.", "C": "cooking = nấu ăn.", "D": "laundry = giặt giũ."}}, {"id": 32, "section": "E3", "qno": 32, "text": "Mr Lewis is the__________ of the family, but he still helps his wife with the housework whenever he has time.", "options": ["breadwinner", "homemaker", "housemaid", "solider"], "correct": 0, "explanation": "<b>breadwinner</b> là người kiếm thu nhập chính. Từ “but” cho thấy dù là người đi kiếm tiền, ông vẫn giúp việc nhà.", "translation": "Ông Lewis là trụ cột kinh tế của gia đình, nhưng vẫn giúp vợ làm việc nhà khi có thời gian.", "clue": "breadwinner of the family.", "remember": "breadwinner = người kiếm thu nhập chính", "option_notes": {"A": "breadwinner = đúng.", "B": "homemaker = người nội trợ.", "C": "housemaid = người giúp việc.", "D": "solider (theo nguồn) không phù hợp."}}, {"id": 33, "section": "E3", "qno": 33, "text": "My mother is ____ for taking care of the home and the family.", "options": ["responsible", "takes the responsibility", "take the duty", "Both B & C are correct."], "correct": 0, "explanation": "Sau <b>is</b> cần tính từ. Cấu trúc đúng là <b>be responsible for + N/V-ing</b>.", "translation": "Mẹ tôi chịu trách nhiệm chăm sóc nhà cửa và gia đình.", "clue": "is + adjective; responsible for + V-ing.", "remember": "be responsible for = chịu trách nhiệm về", "option_notes": {"A": "responsible là tính từ, tạo cấu trúc is responsible for; đúng.", "B": "is takes the responsibility sai vì sau is không thể đặt động từ chia takes như vậy.", "C": "is take the duty sai cấu trúc và sai hòa hợp.", "D": "B và C đều sai nên D sai."}}, {"id": 34, "section": "E3", "qno": 35, "text": "Do you have to do __________ ?", "options": ["the mess", "your bed", "the washing-up", "the cook"], "correct": 2, "explanation": "<b>do the washing-up</b> là collocation đúng nghĩa “rửa bát”.", "translation": "Bạn có phải rửa bát không?", "clue": "do + the washing-up.", "remember": "do the washing-up = rửa bát", "option_notes": {"A": "do the mess không tự nhiên; thường clean up the mess.", "B": "make your bed, không phải do your bed.", "C": "do the washing-up = đúng.", "D": "do the cook sai; cook là động từ/người nấu."}}, {"id": 35, "section": "E3", "qno": 36, "text": "My responsibility is to wash the dishes and _______ the rubbish.", "options": ["take up", "get out", "get up", "put out"], "correct": 3, "explanation": "<b>put out the rubbish</b> = đem rác ra ngoài để thu gom.", "translation": "Trách nhiệm của tôi là rửa bát và đem rác ra ngoài.", "clue": "put out + rubbish.", "remember": "put out the rubbish", "option_notes": {"A": "take up = bắt đầu một hoạt động/chiếm chỗ.", "B": "get out = đi ra/đưa ra, nhưng không phải collocation mục tiêu.", "C": "get up = thức dậy.", "D": "put out = đem/đặt ra ngoài; đúng."}}, {"id": 36, "section": "E4", "qno": 1, "text": "He __________ to the cinema yesterday evening.", "options": ["has gone", "goes", "went", "had gone"], "correct": 2, "explanation": "Dấu hiệu <b>yesterday evening</b> → quá khứ đơn. Động từ <i>go</i> ở quá khứ là <b>went</b>.", "translation": "Anh ấy đã đi đến rạp chiếu phim tối hôm qua.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "Dấu hiệu <b>yesterday evening</b> → quá khứ đơn. Động từ <i>go</i> ở quá khứ là <b>went</b>.", "option_notes": {"A": "has gone là hiện tại hoàn thành, không dùng với mốc quá khứ đã kết thúc như yesterday.", "B": "goes là hiện tại đơn.", "C": "went là quá khứ đơn; đúng.", "D": "had gone là quá khứ hoàn thành, cần một mốc/hành động quá khứ khác làm chuẩn."}}, {"id": 37, "section": "E4", "qno": 2, "text": "Jim ______________ a book at the moment.", "options": ["is reading", "had read", "reads", "has read"], "correct": 0, "explanation": "<b>at the moment</b> là dấu hiệu điển hình của hiện tại tiếp diễn: <b>am/is/are + V-ing</b>.", "translation": "Jim đang đọc một cuốn sách vào lúc này.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "<b>at the moment</b> là dấu hiệu điển hình của hiện tại tiếp diễn: <b>am/is/are + V-ing</b>.", "option_notes": {"A": "is reading = hiện tại tiếp diễn; đúng.", "B": "had read = quá khứ hoàn thành.", "C": "reads = hiện tại đơn.", "D": "has read = hiện tại hoàn thành."}}, {"id": 38, "section": "E4", "qno": 3, "text": "I’m busy at the moment,_______ on the computer", "options": ["I work", "I’m worked", "I’m working", "I worked"], "correct": 2, "explanation": "“at the moment” và ngữ cảnh “I’m busy” → hành động đang diễn ra: <b>I’m working</b>.", "translation": "Tôi đang bận lúc này, tôi đang làm việc trên máy tính.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "“at the moment” và ngữ cảnh “I’m busy” → hành động đang diễn ra: <b>I’m working</b>.", "option_notes": {"A": "I work diễn tả thói quen.", "B": "I’m worked là cấu trúc bị động không phù hợp.", "C": "I’m working = đang làm việc; đúng.", "D": "I worked = quá khứ đơn."}}, {"id": 39, "section": "E4", "qno": 4, "text": "Don’t bother me while I ______________", "options": ["am working", "was working", "will work", "will have completed"], "correct": 0, "explanation": "Sau lời yêu cầu ở hiện tại “Don’t bother me”, mệnh đề <b>while</b> diễn tả hành động đang diễn ra: <b>am working</b>.", "translation": "Đừng làm phiền tôi khi tôi đang làm việc.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "Sau lời yêu cầu ở hiện tại “Don’t bother me”, mệnh đề <b>while</b> diễn tả hành động đang diễn ra: <b>am working</b>.", "option_notes": {"A": "am working phù hợp với hành động đang diễn ra.", "B": "was working nói về quá khứ.", "C": "will work không tự nhiên sau while trong ý này.", "D": "will have completed là tương lai hoàn thành, không phù hợp."}}, {"id": 40, "section": "E4", "qno": 5, "text": "My brother______________out at weekend.", "options": ["doesn’t usually go", "does usually not go", "doesn’t usually goes", "usually doesn’t goes."], "correct": 0, "explanation": "Hiện tại đơn phủ định với ngôi thứ ba: <b>doesn’t + adverb + V nguyên mẫu</b> → doesn’t usually go.", "translation": "Anh trai tôi thường không đi chơi vào cuối tuần.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "Hiện tại đơn phủ định với ngôi thứ ba: <b>doesn’t + adverb + V nguyên mẫu</b> → doesn’t usually go.", "option_notes": {"A": "doesn’t usually go: đúng trật tự và dạng động từ.", "B": "does usually not go kém tự nhiên trong cấu trúc chuẩn của bài.", "C": "sau doesn’t phải là go, không phải goes.", "D": "sau doesn’t phải dùng go; vị trí trạng từ cũng không theo mẫu chuẩn."}}, {"id": 41, "section": "E4", "qno": 6, "text": "Every day, my sister ______________the floor.", "options": ["usually clean", "cleans usually", "usually cleaned", "usually cleans"], "correct": 3, "explanation": "<b>Every day</b> → hiện tại đơn. Trạng từ tần suất đứng trước động từ thường: <b>usually cleans</b>.", "translation": "Mỗi ngày, chị/em gái tôi thường lau sàn.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "<b>Every day</b> → hiện tại đơn. Trạng từ tần suất đứng trước động từ thường: <b>usually cleans</b>.", "option_notes": {"A": "thiếu -s ở động từ với chủ ngữ số ít.", "B": "vị trí usually không tự nhiên trong dạng bài này.", "C": "cleaned là quá khứ.", "D": "usually cleans = đúng."}}, {"id": 42, "section": "E4", "qno": 7, "text": "Listen! Someone ______________.", "options": ["is singing", "are singing", "sings", "sing"], "correct": 0, "explanation": "<b>Listen!</b> báo hiệu hành động đang xảy ra → hiện tại tiếp diễn. <i>Someone</i> là chủ ngữ số ít → <b>is singing</b>.", "translation": "Nghe này! Có ai đó đang hát.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "<b>Listen!</b> báo hiệu hành động đang xảy ra → hiện tại tiếp diễn. <i>Someone</i> là chủ ngữ số ít → <b>is singing</b>.", "option_notes": {"A": "is singing = đúng.", "B": "someone số ít nên không dùng are.", "C": "sings là hiện tại đơn, thường nói thói quen.", "D": "sing thiếu trợ động từ/chia động từ."}}, {"id": 43, "section": "E4", "qno": 8, "text": "First thing in the morning, I_____ a cup of milk tea.", "options": ["has", "am having", "have", "will have"], "correct": 2, "explanation": "Câu diễn tả thói quen buổi sáng → hiện tại đơn. Với chủ ngữ <i>I</i> dùng <b>have</b>.", "translation": "Việc đầu tiên vào buổi sáng là tôi uống một cốc trà sữa.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "Câu diễn tả thói quen buổi sáng → hiện tại đơn. Với chủ ngữ <i>I</i> dùng <b>have</b>.", "option_notes": {"A": "has dùng với he/she/it.", "B": "am having diễn tả việc tạm thời/đang diễn ra, không phù hợp thói quen.", "C": "have = đúng.", "D": "will have là tương lai."}}, {"id": 44, "section": "E4", "qno": 9, "text": "Anita ______________ very hard at the moment.", "options": ["is studying", "studies", "studied", "has studied"], "correct": 0, "explanation": "<b>at the moment</b> → hiện tại tiếp diễn: <b>is studying</b>.", "translation": "Anita đang học rất chăm chỉ vào lúc này.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "<b>at the moment</b> → hiện tại tiếp diễn: <b>is studying</b>.", "option_notes": {"A": "is studying = đúng.", "B": "studies = hiện tại đơn.", "C": "studied = quá khứ đơn.", "D": "has studied = hiện tại hoàn thành."}}, {"id": 45, "section": "E4", "qno": 10, "text": "I usually __________ to school by bus.", "options": ["went", "am going", "go", "have gone"], "correct": 2, "explanation": "<b>usually</b> → thói quen, dùng hiện tại đơn. Chủ ngữ <i>I</i> + <b>go</b>.", "translation": "Tôi thường đi học bằng xe buýt.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "<b>usually</b> → thói quen, dùng hiện tại đơn. Chủ ngữ <i>I</i> + <b>go</b>.", "option_notes": {"A": "went = quá khứ.", "B": "am going = hiện tại tiếp diễn.", "C": "go = hiện tại đơn; đúng.", "D": "have gone = hiện tại hoàn thành."}}, {"id": 46, "section": "E4", "qno": 11, "text": "Our friends ____ for the fashion show now.", "options": ["is preparing", "are preparing", "prepares", "prepare"], "correct": 1, "explanation": "<b>now</b> → hiện tại tiếp diễn. <i>Our friends</i> số nhiều → <b>are preparing</b>.", "translation": "Các bạn của chúng tôi đang chuẩn bị cho buổi trình diễn thời trang.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "<b>now</b> → hiện tại tiếp diễn. <i>Our friends</i> số nhiều → <b>are preparing</b>.", "option_notes": {"A": "is không hòa hợp với chủ ngữ số nhiều.", "B": "are preparing = đúng.", "C": "prepares dùng hiện tại đơn ngôi số ít.", "D": "prepare là hiện tại đơn, không phù hợp dấu hiệu now."}}, {"id": 47, "section": "E4", "qno": 12, "text": "All staff in this restaurant ____ an urgent meeting right now.", "options": ["are attending", "is attending", "attends", "attend"], "correct": 0, "explanation": "<b>right now</b> → hiện tại tiếp diễn. Theo cách dùng số nhiều trong câu nguồn, <b>staff</b> đi với <b>are attending</b>.", "translation": "Toàn bộ nhân viên trong nhà hàng này đang tham dự một cuộc họp khẩn ngay lúc này.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "<b>right now</b> → hiện tại tiếp diễn. Theo cách dùng số nhiều trong câu nguồn, <b>staff</b> đi với <b>are attending</b>.", "option_notes": {"A": "are attending = đúng theo chủ ngữ tập thể được hiểu là nhiều thành viên.", "B": "is attending không phù hợp với cách dùng số nhiều của all staff trong câu này.", "C": "attends là hiện tại đơn ngôi số ít.", "D": "attend là hiện tại đơn, không phù hợp right now."}}, {"id": 48, "section": "E4", "qno": 13, "text": "Yesterday morning I ____ up early.", "options": ["got", "get", "was getting", "had got"], "correct": 0, "explanation": "<b>Yesterday morning</b> → quá khứ đơn. Cụm <i>get up</i> có quá khứ là <b>got up</b>.", "translation": "Sáng hôm qua tôi dậy sớm.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "<b>Yesterday morning</b> → quá khứ đơn. Cụm <i>get up</i> có quá khứ là <b>got up</b>.", "option_notes": {"A": "got = quá khứ của get; đúng.", "B": "get = hiện tại.", "C": "was getting cần bối cảnh hành động đang diễn ra.", "D": "had got là quá khứ hoàn thành, cần một mốc quá khứ khác."}}, {"id": 49, "section": "E4", "qno": 14, "text": "Please don’t make so much noise. I ____________.", "options": ["studying", "study", "am studying", "studied"], "correct": 2, "explanation": "Người nói yêu cầu đừng làm ồn vì hành động học đang xảy ra ngay lúc nói → <b>am studying</b>.", "translation": "Làm ơn đừng làm ồn. Tôi đang học.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "Người nói yêu cầu đừng làm ồn vì hành động học đang xảy ra ngay lúc nói → <b>am studying</b>.", "option_notes": {"A": "studying thiếu trợ động từ be.", "B": "study = hiện tại đơn, thói quen.", "C": "am studying = hiện tại tiếp diễn; đúng.", "D": "studied = quá khứ."}}, {"id": 50, "section": "E4", "qno": 15, "text": "I ____ a bike to school every day but today I ____ to school by bus because it was stolen yesterday.", "options": ["rode - went", "ride - am going", "ride - go", "is riding - am going"], "correct": 1, "explanation": "“every day” → thói quen: <b>ride</b>. “today” diễn tả tình huống tạm thời khác thói quen → <b>am going</b>.", "translation": "Tôi đi xe đạp đến trường mỗi ngày, nhưng hôm nay tôi đang đi xe buýt vì chiếc xe đã bị trộm hôm qua.", "clue": "Dựa vào dấu hiệu thời gian và cấu trúc thì trong câu.", "remember": "“every day” → thói quen: <b>ride</b>. “today” diễn tả tình huống tạm thời khác thói quen → <b>am going</b>.", "option_notes": {"A": "rode/went đều quá khứ, không hợp với every day và today trong câu hiện tại.", "B": "ride - am going: đúng sự đối lập thói quen và tình huống tạm thời.", "C": "ride - go làm cả hai thành thói quen, không thể hiện tình huống tạm thời hôm nay.", "D": "is riding sai hòa hợp với chủ ngữ I."}}];
+const KEY='e10_unit1_familylife_v1';
+let state={sound:true,answers:{},first:{},retries:{},name:'',className:''};
+const $=id=>document.getElementById(id);
+
+function save(){
+ state.name=$('name').value;state.className=$('className').value;
+ localStorage.setItem(KEY,JSON.stringify(state));
+}
+function load(){
+ try{
+  const x=JSON.parse(localStorage.getItem(KEY)||'null');
+  if(x&&confirm('Bạn có muốn tiếp tục bài đang làm không?'))state={...state,...x};
+  else if(x)localStorage.removeItem(KEY);
+ }catch(e){}
+ $('name').value=state.name||'';$('className').value=state.className||'';
+}
+function stats(){
+ const a=Object.keys(state.first).length;
+ const r=Object.values(state.first).filter(x=>x.correct).length;
+ $('done').textContent=a;$('left').textContent=50-a;$('right').textContent=r;
+ $('acc').textContent=a?Math.round(r/a*100)+'%':'0%';$('bar').style.width=(a/50*100)+'%';
+}
+function play(ok){
+ if(!state.sound)return;
+ try{
+  const C=AudioContext||webkitAudioContext,c=new C(),g=c.createGain();g.connect(c.destination);
+  g.gain.setValueAtTime(.0001,c.currentTime);g.gain.exponentialRampToValueAtTime(.1,c.currentTime+.01);
+  const notes=ok?[760,980]:[420,330,235];
+  notes.forEach((f,i)=>{const o=c.createOscillator();o.frequency.value=f;o.type=ok?'sine':'triangle';o.connect(g);
+   const st=c.currentTime+i*(ok?.08:.11);o.start(st);o.stop(st+.13)});
+  g.gain.exponentialRampToValueAtTime(.0001,c.currentTime+.45);setTimeout(()=>c.close(),650);
+ }catch(e){}
+}
+function confetti(){
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ for(let i=0;i<25;i++){const d=document.createElement('i');d.className='confetti';d.style.left=Math.random()*100+'vw';
+ d.style.background=['#1769e0','#ff8a34','#39a96b','#ffd166'][i%4];d.style.animationDelay=Math.random()*.15+'s';
+ document.body.appendChild(d);setTimeout(()=>d.remove(),1400)}
+}
+function card(q){
+ return `<article class="card" id="q-${q.id}">
+ <div class="qhead"><div class="qnum">Question ${q.qno}</div><div class="qstatus" id="st-${q.id}">Chưa làm</div></div>
+ <div class="qtext">${q.text}</div>
+ <div class="options">${q.options.map((o,i)=>`<button class="option" data-q="${q.id}" data-o="${i}"><b>${'ABCD'[i]}.</b> ${o}</button>`).join('')}</div>
+ <div class="feedback" id="fb-${q.id}"></div>
+ <div class="explain" id="ex-${q.id}"></div>
+ <div class="actions"><button class="btn retry" data-q="${q.id}" id="retry-${q.id}" style="display:none">↻ Làm lại câu này</button></div>
+ </article>`;
+}
+function render(){
+ $('e3').innerHTML=questions.filter(q=>q.section==='E3').map(card).join('');
+ $('e4').innerHTML=questions.filter(q=>q.section==='E4').map(card).join('');
+ document.querySelectorAll('.option').forEach(b=>b.addEventListener('click',()=>answer(+b.dataset.q,+b.dataset.o)));
+ document.querySelectorAll('.retry').forEach(b=>b.addEventListener('click',()=>retry(+b.dataset.q)));
+ for(const q of questions) if(state.first[q.id]) restore(q);
+ stats();
+}
+function answer(id,opt){
+ const q=questions.find(x=>x.id===id); if(state.first[id] && !state.retries[id]) return;
+ const ok=opt===q.correct;
+ state.answers[id]=opt;
+ if(!state.first[id])state.first[id]={correct:ok,answer:opt};
+ show(q,opt,ok,false);stats();save();
+}
+function optionAnalysis(q){
+ return q.options.map((o,i)=>`<div><b>${'ABCD'[i]}. ${o}</b> — ${q.option_notes['ABCD'[i]]||''}</div>`).join('');
+}
+function show(q,opt,ok,restoring){
+ const card=$('q-'+q.id),buttons=card.querySelectorAll('.option');
+ buttons.forEach((b,i)=>{b.disabled=true;b.classList.remove('correct','wrong');if(i===q.correct)b.classList.add('correct');if(i===opt&&!ok)b.classList.add('wrong')});
+ card.classList.toggle('correct-card',ok);card.classList.toggle('wrong-card',!ok);
+ const fb=$('fb-'+q.id);fb.className='feedback show '+(ok?'ok':'bad');
+ fb.innerHTML=ok?'<b>✓ Chính xác!</b>':'<b>✕ Chưa chính xác!</b> Đáp án đúng đã được tô xanh.';
+ const ex=$('ex-'+q.id);ex.className='explain show';
+ ex.innerHTML=`<h4>PHẦN GIẢI THÍCH CHI TIẾT</h4>
+ <b>1. Phân tích từng đáp án</b><div class="option-analysis">${optionAnalysis(q)}</div>
+ <p><b>2. Dịch nghĩa toàn câu:</b> ${q.translation}</p>
+ <p><b>3. Dấu hiệu / từ khóa:</b> ${q.clue}</p>
+ <p><b>4. Vì sao chọn đáp án đúng?</b> ${q.explanation}</p>
+ <p><b>5. Kiến thức cần nhớ:</b> ${q.remember}</p>
+ <p><b>6. Đáp án đúng:</b> ${'ABCD'[q.correct]}. ${q.options[q.correct]}</p>`;
+ $('retry-'+q.id).style.display='inline-block';
+ $('st-'+q.id).textContent=state.first[q.id]?.correct?'Đúng lần đầu':'Sai lần đầu';
+ $('st-'+q.id).style.color=state.first[q.id]?.correct?'#248653':'#c04b5b';
+ if(!restoring){play(ok);if(ok)confetti();else{card.classList.add('shake');setTimeout(()=>card.classList.remove('shake'),320)}}
+ state.retries[q.id]=0;
+}
+function restore(q){
+ const opt=state.answers[q.id]??state.first[q.id].answer;
+ show(q,opt,opt===q.correct,true);
+}
+function retry(id){
+ const q=questions.find(x=>x.id===id),card=$('q-'+id);
+ state.retries[id]=(state.retries[id]||0)+1;
+ card.querySelectorAll('.option').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong')});
+ $('fb-'+id).className='feedback';$('ex-'+id).className='explain';$('retry-'+id).style.display='none';
+ card.classList.remove('correct-card','wrong-card');save();
+}
+function showModal(x){$('modalContent').innerHTML=x;$('modal').classList.add('show')}
+function mistakes(){
+ const ids=Object.entries(state.first).filter(([id,v])=>!v.correct).map(([id])=>+id);
+ if(!ids.length){showModal('<h3>✅ Câu sai</h3><p>Chưa có câu sai lần đầu.</p>');return}
+ showModal('<h3>⚠ CÁC CÂU SAI LẦN ĐẦU</h3>'+ids.map(id=>{const q=questions.find(x=>x.id===id),f=state.first[id];
+ return `<div class="review"><b>${q.section} – Question ${q.qno}</b><br>${q.text}<br><span style="color:#bd4455">Bài làm: ${'ABCD'[f.answer]}. ${q.options[f.answer]}</span><br><span style="color:#23844f">Đúng: ${'ABCD'[q.correct]}. ${q.options[q.correct]}</span></div>`}).join(''))
+}
+function firstUnanswered(){
+ const q=questions.find(x=>!state.first[x.id]);if(!q){showModal('<h3>🎉 Hoàn thành</h3><p>Bạn đã làm đủ 50 câu.</p>');return}
+ $('q-'+q.id).scrollIntoView({behavior:'smooth',block:'center'});
+}
+function submit(){
+ const attempted=Object.keys(state.first).length,left=50-attempted;
+ if(left&&!confirm(`Bạn còn ${left} câu chưa làm. Vẫn nộp bài?`))return;
+ const right=Object.values(state.first).filter(x=>x.correct).length,pct=attempted?Math.round(right/attempted*100):0;
+ const e3=questions.filter(q=>q.section==='E3'&&state.first[q.id]?.correct).length;
+ const e4=questions.filter(q=>q.section==='E4'&&state.first[q.id]?.correct).length;
+ const msg=pct>=90?'Con làm rất tốt! Hãy tiếp tục phát huy nhé!':pct>=70?'Con làm khá tốt! Hãy xem lại một vài câu nhé!':pct>=50?'Con đã có cố gắng! Hãy đọc kỹ phần giải thích và làm lại nhé!':'Không sao đâu! Con hãy bình tĩnh xem lại kiến thức và thử thêm lần nữa nhé!';
+ showModal(`<h3>🏆 KẾT QUẢ</h3><p><b>${$('name').value||'Học sinh'}</b> • ${$('className').value||'Chưa nhập lớp'}</p>
+ <div class="review">E3 Vocabulary: <b>${e3}/35</b></div><div class="review">E4 Grammar: <b>${e4}/15</b></div>
+ <div class="review">Đúng lần đầu: <b>${right}/${attempted}</b> • ${pct}%</div><p><b>${msg}</b></p>`);
+ confetti();play(true);save();
+}
+$('soundBtn').addEventListener('click',()=>{state.sound=!state.sound;$('soundBtn').textContent=state.sound?'🔊 Âm thanh':'🔇 Âm thanh';save()});
+$('printBtn').addEventListener('click',()=>window.print());
+$('resetBtn').addEventListener('click',()=>{if(confirm('Bạn có chắc muốn xóa toàn bộ kết quả và làm lại?')){localStorage.removeItem(KEY);location.reload()}});
+$('unanswered').addEventListener('click',firstUnanswered);$('mistakes').addEventListener('click',mistakes);$('submit').addEventListener('click',submit);
+$('close').addEventListener('click',()=>$('modal').classList.remove('show'));$('modal').addEventListener('click',e=>{if(e.target===$('modal'))$('modal').classList.remove('show')});
+$('name').addEventListener('input',save);$('className').addEventListener('input',save);
+load();$('soundBtn').textContent=state.sound?'🔊 Âm thanh':'🔇 Âm thanh';render();
+</script>
+</body>
+</html>
